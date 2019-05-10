@@ -48,10 +48,13 @@ public class Ventti {
                     String jatka3 = lukija.nextLine();
                     if (jatka3.equals("k") && (kortti+kortti2+kortti3+kortti4+kortti5)<=21) {
                     System.out.println(kortti + " | " + kortti2 + " | " + kortti3 + " | " + kortti4 + " | "+kortti5+ "\nVoitit!");    
+                    } else if(jatka3.equals("e") || (kortti+kortti2+kortti3+kortti4+kortti5)>21){
+                        System.out.println(kortti + " | " + kortti2 + " | " + kortti3 + " | " + kortti4 + " | " + kortti5);
+                        System.out.println("Hävisit!");
                     }
                     //mitä tapahtuu, kun 
                 } else if (jatka2.equals("e") || (kortti + kortti2 + kortti3 + kortti4) > 21) {
-                    System.out.println(kortti + " | " + kortti2 + " | " + kortti3);
+                    System.out.println(kortti + " | " + kortti2 + " | " + kortti3 + " | " + kortti4);
                     System.out.println("Hävisit!");
                 }
             } else if (jatka.equals("e") || (kortti + kortti2 + kortti3) > 21) {
