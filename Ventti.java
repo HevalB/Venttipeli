@@ -5,6 +5,7 @@
  */
 package Oliot;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -15,56 +16,111 @@ public class Ventti {
 
     public static void main(String[] args) {
 
-        double randomDouble = Math.random();
-        randomDouble = randomDouble * 13 + 2;
-        int kortti = (int) randomDouble;
+        int[] kortit = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+        Random r = new Random();
+        int pelaajaKortti = r.nextInt(kortit.length);
+        int pelaajaKortti2 = r.nextInt(kortit.length);
+        int pelaajaKortti3 = r.nextInt(kortit.length);
+        int pelaajaKortti4 = r.nextInt(kortit.length);
+        int pelaajaKortti5 = r.nextInt(kortit.length);
 
-        double randomDouble2 = Math.random();
-        randomDouble2 = randomDouble2 * 13 + 2;
-        int kortti2 = (int) randomDouble2;
-
-        double randomDouble3 = Math.random();
-        randomDouble3 = randomDouble3 * 13 + 2;
-        int kortti3 = (int) randomDouble3;
-
-        double randomDouble4 = Math.random();
-        randomDouble4 = randomDouble4 * 13 + 2;
-        int kortti4 = (int) randomDouble4;
-
-        double randomDouble5 = Math.random();
-        randomDouble5 = randomDouble5 * 13 + 2;
-        int kortti5 = (int) randomDouble5;
+        int emantaKortti = r.nextInt(kortit.length);
+        int emantaKortti2 = r.nextInt(kortit.length);
+        int emantaKortti3 = r.nextInt(kortit.length);
+        int emantaKortti4 = r.nextInt(kortit.length);
+        int emantaKortti5 = r.nextInt(kortit.length);
 
         Scanner lukija = new Scanner(System.in);
-        //jaa kortit
-        if ((kortti + kortti2) < 21) {
-            System.out.println(kortti + " | " + kortti2 + "\nHaluatko jatkaa? (k/e)");
+        //jaa kortit pelaajalle
+        if ((kortit[pelaajaKortti] + kortit[pelaajaKortti2]) < 21) {
+            System.out.println(kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + "\nHaluatko jatkaa? (k/e)");
+            System.out.println("Summa: " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2]));
             String jatka = lukija.nextLine();
-            if (jatka.equals("k") && (kortti + kortti2 + kortti3) < 21) {
-                System.out.println(kortti + " | " + kortti2 + " | " + kortti3 + "\nHaluatko jatkaa? (k/e)");
-                String jatka2 = lukija.nextLine();
-                if (jatka2.equals("k") && (kortti + kortti2 + kortti3 + kortti4) < 21) {
-                    System.out.println(kortti + " | " + kortti2 + " | " + kortti3 + " | " + kortti4+ "\nHaluatko jatkaa? (k/e)");
-                    String jatka3 = lukija.nextLine();
-                    if (jatka3.equals("k") && (kortti+kortti2+kortti3+kortti4+kortti5)<=21) {
-                    System.out.println(kortti + " | " + kortti2 + " | " + kortti3 + " | " + kortti4 + " | "+kortti5+ "\nVoitit!");    
-                    } else if(jatka3.equals("e") || (kortti+kortti2+kortti3+kortti4+kortti5)>21){
-                        System.out.println(kortti + " | " + kortti2 + " | " + kortti3 + " | " + kortti4 + " | " + kortti5);
-                        System.out.println("Hävisit!");
-                    }
-                    //mitä tapahtuu, kun 
-                } else if (jatka2.equals("e") || (kortti + kortti2 + kortti3 + kortti4) > 21) {
-                    System.out.println(kortti + " | " + kortti2 + " | " + kortti3 + " | " + kortti4);
-                    System.out.println("Hävisit!");
-                }
-            } else if (jatka.equals("e") || (kortti + kortti2 + kortti3) > 21) {
-                System.out.println(kortti + " | " + kortti2 + " | " + kortti3);
+
+            if ((jatka.equals("e")) && (kortit[pelaajaKortti] + kortit[pelaajaKortti2]) > (kortit[emantaKortti] + kortit[emantaKortti2]) && (kortit[pelaajaKortti] + kortit[pelaajaKortti2]) < 21) {
+                System.out.println("Pelaajan käsi: " + kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " = " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2]));
+                System.out.println("Emännän käsi: " + kortit[emantaKortti] + " | " + kortit[emantaKortti2] + " = " + (kortit[emantaKortti] + kortit[emantaKortti2]));
+                System.out.println("Voitit!");
+            } else if ((jatka.equals("e")) && (kortit[pelaajaKortti] + kortit[pelaajaKortti2]) <= (kortit[emantaKortti] + kortit[emantaKortti2]) && (kortit[emantaKortti] + kortit[emantaKortti2]) < 21) {
+                System.out.println("Pelaajan käsi: " + kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " = " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2]));
+                System.out.println("Emännän käsi: " + kortit[emantaKortti] + " | " + kortit[emantaKortti2] + " = " + (kortit[emantaKortti] + kortit[emantaKortti2]));
                 System.out.println("Hävisit!");
             }
-        } else if ((kortti + kortti2) > 21) {
-            System.out.println(kortti + " | " + kortti2);
+
+            if (jatka.equals("k") && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3]) < 21) {
+                System.out.println(kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3] + "\nHaluatko jatkaa? (k/e)");
+                System.out.println("Summa: " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3]));
+                String jatka2 = lukija.nextLine();
+
+                if ((jatka2.equals("e")) && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3]) > (kortit[emantaKortti] + kortit[emantaKortti2] + kortit[emantaKortti3]) && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3]) < 21) {
+                    System.out.println("Pelaajan käsi: " + kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3] + " = " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3]));
+                    System.out.println("Emännän käsi: " + kortit[emantaKortti] + " | " + kortit[emantaKortti2] + " | " + kortit[emantaKortti3] + " = " + (kortit[emantaKortti] + kortit[emantaKortti2] + kortit[emantaKortti3]));
+                    System.out.println("Voitit!");
+                } else if ((jatka2.equals("e")) && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3]) <= (kortit[emantaKortti] + kortit[emantaKortti2] + kortit[emantaKortti3]) && (kortit[emantaKortti] + kortit[emantaKortti2] + kortit[emantaKortti3]) < 21) {
+                    System.out.println("Pelaajan käsi: " + kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3] + " = " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3]));
+                    System.out.println("Emännän käsi: " + kortit[emantaKortti] + " | " + kortit[emantaKortti2] + " | " + kortit[emantaKortti3] + " = " + (kortit[emantaKortti] + kortit[emantaKortti2] + kortit[emantaKortti3]));
+                    System.out.println("Hävisit!");
+                }
+
+                if (jatka2.equals("k") && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4]) < 21) {
+                    System.out.println(kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3] + " | " + kortit[pelaajaKortti4] + "\nHaluatko jatkaa? (k/e)");
+                    System.out.println("Summa: " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4]));
+                    String jatka3 = lukija.nextLine();
+
+                    if ((jatka3.equals("e")) && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4]) > (kortit[emantaKortti] + kortit[emantaKortti2] + kortit[emantaKortti3] + kortit[emantaKortti4]) && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4]) < 21) {
+                        System.out.println("Pelaajan käsi: " + kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3] + " | " + kortit[pelaajaKortti4] + " = " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4]));
+                        System.out.println("Emännän käsi: " + kortit[emantaKortti] + " | " + kortit[emantaKortti2] + " | " + kortit[emantaKortti3] + " | " + kortit[emantaKortti4] + " = " + (kortit[emantaKortti] + kortit[emantaKortti2] + kortit[emantaKortti3] + kortit[emantaKortti4]));
+                        System.out.println("Voitit!");
+                    } else if ((jatka3.equals("e")) && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4]) <= (kortit[emantaKortti] + kortit[emantaKortti2] + kortit[emantaKortti3] + kortit[emantaKortti4]) && (kortit[emantaKortti] + kortit[emantaKortti2] + kortit[emantaKortti3] + kortit[emantaKortti4]) < 21) {
+                        System.out.println("Pelaajan käsi: " + kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3] + " | " + kortit[pelaajaKortti4] + " = " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4]));
+                        System.out.println("Emännän käsi: " + kortit[emantaKortti] + " | " + kortit[emantaKortti2] + " | " + kortit[emantaKortti3] + " | " + kortit[emantaKortti4] + " = " + (kortit[emantaKortti] + kortit[emantaKortti2] + kortit[emantaKortti3] + kortit[emantaKortti4]));
+                        System.out.println("Hävisit!");
+                    }
+
+                    if (jatka3.equals("k") && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4] + kortit[pelaajaKortti5]) < 21) {
+                        System.out.println(kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3] + " | " + kortit[pelaajaKortti4] + " | " + kortit[pelaajaKortti5] + "\nVoitit!");
+                    } else if ((kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4] + kortit[pelaajaKortti5]) > 21) {
+                        System.out.println(kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3] + " | " + kortit[pelaajaKortti4] + " | " + kortit[pelaajaKortti5]);
+                        System.out.println("Summa: " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4] + kortit[pelaajaKortti5]));
+                        System.out.println("Hävisit!");
+                    } else if ((kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4] + kortit[pelaajaKortti5]) == 21) {
+                        System.out.println(kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3] + " | " + kortit[pelaajaKortti4] + " | " + kortit[pelaajaKortti5]);
+                        System.out.println("Summa: " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4] + kortit[pelaajaKortti5]));
+                        System.out.println("Voitit!");
+                    }
+
+                } else if (jatka2.equals("k") && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4]) > 21) {
+                    System.out.println(kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3] + " | " + kortit[pelaajaKortti4]);
+                    System.out.println("Summa: " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4]));
+                    System.out.println("Hävisit!");
+                } else if (jatka2.equals("k") && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4]) == 21) {
+                    System.out.println(kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3] + " | " + kortit[pelaajaKortti4]);
+                    System.out.println("Summa: " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3] + kortit[pelaajaKortti4]));
+                    System.out.println("Voitit!");
+                }
+
+            } else if (jatka.equals("k") && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3]) > 21) {
+                System.out.println(kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3]);
+                System.out.println("Summa: " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3]));
+                System.out.println("Hävisit!");
+            } else if (jatka.equals("k") && (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3]) > 21) {
+                System.out.println(kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " | " + kortit[pelaajaKortti3]);
+                System.out.println("Summa: " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2] + kortit[pelaajaKortti3]));
+                System.out.println("Voitit!");
+            }
+
+        } else if ((kortit[pelaajaKortti] + kortit[pelaajaKortti2]) > 21) {
+            System.out.println("Pelaajan käsi: " + kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " = " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2]));
+            System.out.println("Hävisit!");
+        } else if (((kortit[pelaajaKortti] + kortit[pelaajaKortti2]) == 21) && ((kortit[emantaKortti] + kortit[emantaKortti2]) != 21)) {
+            System.out.println("Pelaajan käsi: " + kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " = " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2]));
+            System.out.println("Voitit!");
+        } else if (((kortit[emantaKortti] + kortit[emantaKortti2]) == 21) && ((kortit[pelaajaKortti] + kortit[pelaajaKortti2]) == 21)) {
+            System.out.println("Pelaajan käsi: " + kortit[pelaajaKortti] + " | " + kortit[pelaajaKortti2] + " = " + (kortit[pelaajaKortti] + kortit[pelaajaKortti2]));
+            System.out.println("Emännän käsi: " + kortit[emantaKortti] + " | " + kortit[emantaKortti2] + " = " + (kortit[emantaKortti] + kortit[emantaKortti2]));
             System.out.println("Hävisit!");
         }
 
     }
+
 }
